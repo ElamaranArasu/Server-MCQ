@@ -21,17 +21,17 @@ pipeline {
             }
         }
 
-        stage('Notify Git') {
-            steps {
-                script {
-                    // You can add notifications to Git here
-                    // For example, using Git publisher plugin or git command
-                    // Notify Git that the build is completed
-                    sh 'git commit -am "Build completed"'
-                    sh 'git push'
-                }
-            }
-        }
+        // stage('Notify Git') {
+        //     steps {
+        //         script {
+        //             // You can add notifications to Git here
+        //             // For example, using Git publisher plugin or git command
+        //             // Notify Git that the build is completed
+        //             sh 'git commit -am "Build completed"'
+        //             sh 'git push'
+        //         }
+        //     }
+        // }
     }
         
     
