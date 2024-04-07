@@ -1,14 +1,15 @@
 pipeline {
     agent any
 
+
     stages {
-        stage('Clone Repository') {
+        stage('CLONE') {
             steps {
-                git 'https://github.com/ElamaranArasu/Server-MCQ.git'
+                // Get some code from a GitHub repository
+                git branch: 'main', credentialsId: 'github-privateKey', poll: false, url: 'git@github.com:ElamaranArasu/Server-MCQ.git'
             }
         }
-
-        stage('Build') {
+          stage('Build') {
             steps {
                 sh 'mvn clean package' // Assuming Maven is installed and configured
             }
@@ -32,7 +33,8 @@ pipeline {
             }
         }
     }
-
+        
+    
     post {
         success {
             echo 'Build successful! :)'
@@ -41,4 +43,5 @@ pipeline {
             echo 'Build failed! :('
         }
     }
+    
 }
